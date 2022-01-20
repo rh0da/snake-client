@@ -1,17 +1,21 @@
-// establishes a connection with the game server
 const net = require("net");
+
+// establishes a connection with the game server
 const connect = function () {
     const conn = net.createConnection({
-    host: '165.227.47.243', 
-    port: 50541
-    });
-    conn.on("connect", () => {
-    console.log("You are now connected!")
-    });
-    // interpret incoming data as text
-    conn.setEncoding("utf8");
-    
-    return conn;
-    };
+    host: "10.0.0.252",
+    port: 50541,
+  });
 
-    module.exports = connect
+  conn.on("connect", () => {
+    console.log("Successfully connected to game server!");
+    conn.write("Name: RPO");
+  });
+
+  // interpret incoming data as text
+  conn.setEncoding("utf8");
+
+  return conn;
+};
+
+module.exports = connect;
